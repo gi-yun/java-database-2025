@@ -19,16 +19,16 @@ Java개발자 과정 Database 리포지토리
         PS C:\Users\Admin> docker  pull oracleinanutshell/oracle-xe-11g
         ```
     3. 다운로드 이미지 확인
-        '''shell
+        ```shell
         PS C:\Users\Admin> docker images
         REPOSITORY              TAG       IMAGE ID       CREATED        SIZE
         ...
         doctorkirk/oracle-19c   latest    5816fe124f2a   3 years ago    16.8GB
-        '''
+        ```
     4. 도커 컨테이너 실행
-        '''shell
+        ```shell
         PS C:\Users\Admin> docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
-        '''
+        ```
         - 컨테이너의 이름을 oracle11g로 지정합니다.
         - 1521 ='Oracle' 기본포트
         - 아이디: system /비밀번호: oracle
@@ -36,11 +36,11 @@ Java개발자 과정 Database 리포지토리
         - Docker Desktop > Containers 확인
 
     6. Powershell 오픈
-        '''shell
+        ```shell
         > docker exec -it oracle19c bash
         [oracle@7ebc6c4a5e1a ~]$ sqlplus / as sysdba
         SQL >
-        '''
+        ```
     7. DBeaver 접속
         - Connection > Select your DB > Oracle 선택
 
@@ -63,7 +63,7 @@ Java개발자 과정 Database 리포지토리
    
 - SELECT 기본 : [SQL](./Day01/sql01_select기본.sql)
     - 데이터 조회 시 사용하는 기본명령어
-    '''sql
+    ```sql
     -- 기본 주석(한줄)
     /*  여러줄 주석
         여러줄로 주석 작성가능 */
@@ -74,7 +74,7 @@ Java개발자 과정 Database 리포지토리
     [HAVING 집계함수조건(들)]
     [ORDER BY 정렬속성(들) ASC|DSC]
     [WITH ROLLUP]
-    '''
+    ```
 - 기본 쿼리 학습
     1. 기본 SELECT
     2. WHERE 절
