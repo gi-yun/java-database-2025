@@ -135,11 +135,45 @@ SELECT E.COMMISSION_PCT
 -- 오라클만 있는 함수
 SELECT E.EMAIL, E.PHONE_NUMBER , E.JOB_ID
 	 , DECODE(E.JOB_ID, 'IT_PROG', '개발자만쉐', '나머진 다죽어') AS 캐치프레이즈
-  FROM EMPLOYEES e
+  FROM EMPLOYEES e;
 --  WHERE E.JOB_ID  = 'IT_PROG';
  
  /* CASE 구문, 정말 중요!!
-  * if, elif의 중복된 구문과 유사
+  * if, elif의 중복된 구문과 유사 - 적절하게 사용중
   */
+  SELECT CASE e.JOB_ID  WHEN 'AD_PRES'THEN '사장' 
+  						WHEN 'AD_VP' THEN '부사장'
+  						WHEN 'IT_PROG' THEN '프로그래머'
+  						WHEN 'SA_MAN' THEN '영업사원'
+  						ELSE '미분류'
+  		END AS 직급
+  	  , e.EMPLOYEE_ID
+  	  , e.JOB_ID
+    FROM EMPLOYEES e;
 
-  
+ /*
+  * 정규식(Regula Expression) - 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
+  * ^, $, . , * , [] , [^], { } 패턴인식할때 필요한 키워드.
+  */
+ 
+ SELECT *
+   FROM EMPLOYEES e 
+   WHERE e.PHONE_NUMBER LIKE '%.%.%'; -- 세자리 전화, 네자리 전화번호가 구분안됨.
+
+ SELECT *
+   FROM EMPLOYEES e 
+   WHERE e.PHONE_NUMBER LIKE '5__.___.%'; -- 5로 시작하고 3자리 3자리 나머지
+   
+-- 전화번호가 .로 구분되는 세자리 전화번호만 필터링
+-- '[0-9]{6}-[0-9]{7}' 주민번호 정규식 패턴
+ SELECT *
+   FROM EMPLOYEES e 
+   WHERE REGEXP_LIKE(e.phone_number ,'[0-9]{3}.[0-9]{3}.[0-9]{4}');
+
+ -- first_name이 J로 시작하고, 두번째 글자가 a나 o로 나오는것을 찾기
+ SELECT *
+   FROM EMPLOYEES e 
+   WHERE REGEXP_LIKE(e.first_name ,'^J(a|o)'); -- 
+   
+   
+   
