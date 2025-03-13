@@ -45,7 +45,7 @@ Java개발자 과정 Database 리포지토리
     8. DBeaver 접속
         - Connection > Select your DB > Oracle 선택
 
-        <img src= './image\db001.png' width ='650'>
+        <img src= './image/db001.png' width ='650'>
 
 - DBeaver 툴 설치
     - https://dbeaver.io/download/
