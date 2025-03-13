@@ -118,7 +118,14 @@ Java개발자 과정 Database 리포지토리
 
 ## 3일차
 - JOIN
+    - ERD(Entity Relationship Diagram) - 개체 관계 다이어그램
+        - PK(Primary key) - 기본키. 중복이 안되고, 빠진 데이터가 없다(NOT NULL, UNIQUE).
+        - FK(Foreign key) - 외래키. 다른엔티티(테이블)의 PK 두 엔티티의 관계를 연결해주는 값 (NOT NULL **X**, UNIQUE **X**)
+        - Relationship - 부모 엔티티와 자식 엔티티간의 연관, 부모 1, 은 자식 N 을 가질수 있다. 1:N
     - 카티션곱
-    - 내부조인, 외부조인
+    - 내부조인
+        - 일치하는것
+    - 외부조인
+        - 일치하지않는것도 나옴
 - DDL 
     - CREATE, ALTER, DROP
