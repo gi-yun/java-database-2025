@@ -215,7 +215,7 @@ Java개발자 과정 Database 리포지토리
          ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건
         ```
 - INDEX : [INDEX쿼리](./Day04/sql05_인덱스.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
-    <img src="./image/db003.png" width=600>
+    <!-- <img src="./image/db004.png" width=600> -->
     - 책의 찾아보기와 동일한 기능
     - 검색을 매우 빨리 할 수 있도록 해줌
     - B(alanced) Tree를 사용해서 검색횟수를 log(n)건으로 줄임
