@@ -1,0 +1,61 @@
+/*
+ * VIEW 
+ */
+
+-- sysdba로 실행해야 함.
+GRANT CREATE VIEW TO sampleuser;
+
+--- 기존 select
+SELECT * FROM EMP2 E;
+
+
+SELECT * FROM EM
+--- 뷰생성 DDL
+CREATE VIEW V_EMP2
+AS
+	SELECT EMPNO, NAME, DEPTNO, TEL, POSITION , PEMPNO
+	  FROM EMP2 ;
+
+-- OR REPLACE: 같은 이름의 VIEW가 있을 경우 삭제 후 다시 생성합니다.
+CREATE OR REPLACE VIEW V_EMP2
+AS
+	SELECT EMPNO, NAME, DEPTNO, TEL, POSITION , PEMPNO
+	  FROM EMP2 ;
+
+
+
+-- 
+
+-- 뷰로 select
+-- 단, 뷰에 속하지 않는 컬럼중 NOT NULL 조건이 있으면 데이터 삽입은 불가!!
+SELECT *
+   FROM v_emp2;
+
+--- 뷰로 INSERT
+INSERT INTO V_EMP2 VALUES(20000219, 'Tom Halland', 1004, '051)627-9968', 'IT Programmer', 19960303);
+
+-- deptno컬럼 not null인데 뷰에는 존재하지 않아. INSERT 불가
+INSERT INTO V_EMP2 VALUES(20000220, 'Zen Daiya', '051)627-9968', 'IT Programmer', 19960303);
+
+
+-- CRUD 중 SELECT만 가능하게 만들려면
+CREATE OR REPLACE VIEW V_EMP2
+AS
+	SELECT EMPNO, NAME, DEPTNO, TEL, POSITION , PEMPNO
+	  FROM EMP2
+ WITH READ ONLY;
+
+-- INSERT가 들어가지 않는 모습 *삽입불가
+INSERT INTO V_EMP2 VALUES(20000221, 'Tom Halland1', 1004, '051)627-9968', 'IT Programmer', 19960303);
+
+-- 복합뷰. 조인등으로 여러 테이블을 합쳐서 보여주는 뷰
+-- 복합뷰는 INSERT, UPDATE, DELETE가 거의 불가.
+
+CREATE OR REPLACE VIEW V_EMP3
+AS
+	SELECT E.EMPNO, E.NAME, E.DEPTNO, D.DNAME
+	  FROM EMP2 E, DEPT2 D
+	 WHERE E.DEPTNO = D.DCODE;
+
+SELECT *
+  FROM V_EMP3;
