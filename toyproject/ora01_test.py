@@ -11,17 +11,18 @@ port = 1521
 username = 'madang'
 password = 'madang'
 
-# DB연결 시작
-conn = oci.connect(f'{username}/{password}@{host}:{port}/{sid}')
-cursor = conn.cursor() # DB 커서와 동일한 역할을 하는 개체
+class Main():
+    # DB연결 시작
+    conn = oci.connect(f'{username}/{password}@{host}:{port}/{sid}')
+    cursor = conn.cursor() # DB 커서와 동일한 역할을 하는 개체
 
-query = 'SELECT * FROM Students' # 파이썬에서는 쿼리호출시는 ; 삭제
-cursor.execute(query)
+    query = 'SELECT * FROM Students' # 파이썬에서는 쿼리호출시는 ; 삭제
+    cursor.execute(query)
 
-# 불러온 데이터처리
-for i, item in enumerate(cursor, start=1):
-    print(item)
+    # 불러온 데이터처리
+    for i, item in enumerate(cursor, start=1):
+        print(item)
 
-cursor.close()
-conn.close()
+    cursor.close()
+    conn.close()
 # DB는 연결하면 마지막에 close(), 파일은 오픈하면 마지막에 닫아줘야 함.

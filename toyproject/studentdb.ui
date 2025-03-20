@@ -128,6 +128,12 @@
              </item>
              <item>
               <widget class="QLineEdit" name="input_std_mobile">
+               <property name="maximumSize">
+                <size>
+                 <width>750</width>
+                 <height>600</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>핸드폰번호입력</string>
                </property>
@@ -181,7 +187,7 @@
           </property>
           <layout class="QHBoxLayout" name="buttonArea">
            <item>
-            <widget class="QPushButton" name="btn_insert">
+            <widget class="QPushButton" name="btn_add">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                <horstretch>0</horstretch>
@@ -194,7 +200,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_modify">
+            <widget class="QPushButton" name="btn_mod">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                <horstretch>0</horstretch>
@@ -207,7 +213,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_delete">
+            <widget class="QPushButton" name="btn_del">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                <horstretch>0</horstretch>
@@ -228,12 +234,17 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="tblStudent">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
            <height>320</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>나눔고딕</family>
+          </font>
          </property>
         </widget>
        </item>
