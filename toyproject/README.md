@@ -26,13 +26,13 @@ Python GUI - Oracle연동 프로그램
 - QtDesigner 설치
     - https://build-system.fman.io/qt-designer-download 다운로드 후 설치
 
-### PyQt5
+### PyQt5 개발
 1. PyQt 모듈 사용 윈앱 만들기
 2. 윈도우 기본설정
 3. PyQt 위젯 사용법(레이블, 버튼, 레이아웃, ...)
 4. 시그널(이벤트) 처리방법
 5. QtDesigner로 화면디자인, PyQt와 연동
-    <img src="../image/database-storage.png" width=300>
+    <img src="../image/db006.png" width=600>
 
 
 ### Oracle연동 GUI개발 시작
@@ -100,5 +100,66 @@ Python GUI - Oracle연동 프로그램
         <img src='../image/db008.png' width="600">
 
 - QtDesigner로 화면 구성
-    -     
+    <img src='../image/db009.png' width="650">
+
 - PyQt로 Oracle 연동 CRUD 구현
+    <img src="../image/db010.png" width="600">
+    
+    - 조회 SELECT 구현
+    - 삽입 INSERT 구현
+    - 수정, 삭제 구현
+    - 입력값 검증(Validation check)
+    - DML이 종료된 후 다시 데이터 로드 로직 추가
+    - 데이터 삽입 후, 라인Edit에 기존 입력값이 남아있는 것 제거
+    <img src="../image/db011.png" width="600">
+
+- 개발도중 문제
+    - [x] 수정모드에서 추가버튼을 눌러도 새로 데이터 삽입되는 문제
+    - [x] 수정모드에서 추가를 한 뒤 학생번호가 라인Edit 그대로 존재
+    
+- 개발완료 화면
+    <img src="../image/db012.png" width ="600">
+
+### 데이터베이스 모델링 
+
+- 서점 데이터 모델링
+    - 현실세계 데이터를 DB내에 옮기기 위해서 DB설계하는 것
+    - 모델링 중요점
+        1. 객체별로 테이블을 분리할 것. 객체 -> 테이블
+        2. 각 객체별로 어떤 속성을 가지고 있는지 분리. 속성 -> 컬럼
+        3. 결정자가 없으면 결정자를 어떻게 만들지 파악. 결정자 -> PK
+        4. 한 컬럼에 데이터를 한 개의 데이터만 저장되는 지 파악.
+        5. 어느 객체와 어느 객체가 관련이 있는지 분석. 부모객체와 자식객체의 관련을 정립. 관계, PK/FK
+
+    - 모델링 순서
+        1. 객체 분리 - 고객정보, 도서정보, 출판사정보, 주문정보
+        2. 속성 분리 - 일반속성, 결정자(PK) 속성
+
+    - ERD툴 사용해서 모델링
+        - ERDCloud.com(웹), ERWin(앱), Draw.io
+    
+- ERDCloud.com
+    1. ERD 생성버튼으로 새 ERD 이름 작성 후 만들기
+    2. 논리모델링 시작
+        - 새 엔티티 추가
+        - 엔티티 속성 추가(속성명, 타입, NULL여부)
+        - 결정자(PK) 속성 일부 추가
+        - 관계(7가지 아이콘) 연결
+        - 필요없는 속성제거, 필요한 속성추가
+    3. 물리모델링
+        - 엔티티의 테이블 입력
+        - 각 속성의 컬럼명 입력
+        - DB에 맞게 타입과 크기를 변경(Oracle, MySQL 등)
+    4. 내보내기
+        - DB를 변경
+        - PK제약조건, FK제약조건, 비식별제약조건 선택
+        - SQL 미리보기 확인
+        - SQL 다운로드
+    5. DBeaver
+        - 내보내기한 sql 오픈
+        - 스크립트 실행
+        - (테이블 이름을 너무 길면 제약조건에서 에러잡힌다.)
+        <img src="/image/부경도서.png" width="550">
+        - ER다이어그램 그리기
+        <img src="/image/PKNU_Bookstore.png" width="400">
+        
