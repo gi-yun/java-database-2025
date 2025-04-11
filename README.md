@@ -364,6 +364,9 @@ Java개발자 과정 Database 리포지토리
     - [토이프로젝트](./toyproject/README.md)
 
 ## 10일차
+- HR SQL 연습
+- 코딩테스트 진행
+ 
 
 
 
